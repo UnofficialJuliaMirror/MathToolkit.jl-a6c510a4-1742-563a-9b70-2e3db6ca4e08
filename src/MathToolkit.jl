@@ -3,8 +3,6 @@ module MathToolkit
 export recvec
 export pslq
 
-# TODO: diviser résultat recvec par GCD
-
 function recvec(v; compute=BigInt, output=Int64)
   n = length(v)
   l = Array(Rational{compute}, n)
