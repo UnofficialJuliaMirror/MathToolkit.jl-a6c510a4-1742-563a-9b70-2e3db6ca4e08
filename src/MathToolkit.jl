@@ -22,14 +22,16 @@ function recvec(v; compute=BigInt, output=Int64)
     while l[b] == 0
       if (b += 1) > n
         c = 1
+        g = num(q2[1])
         for k = 1:sq2
           c = lcm(c, den(q2[k]))
+          g = gcd(g, num(q2[k]))
         end
         if q2[1] < 0
           c = -c
         end
         q = Array(output, sq2)
-        q[:] = c*q2[1:sq2]
+        q[:] = (c//g)*q2[1:sq2]
         return q
       end
     end
