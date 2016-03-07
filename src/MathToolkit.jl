@@ -38,7 +38,7 @@ function recvec(v; compute=BigInt, output=Int64)
     # reciprocal of the series: x^(b-1) / taylor(l)
     m[1] = 1 / l[b]
     for k = (b+1):n
-      c = compute(0)
+      c = zero(compute)
       for j = b:(k-1)
         c -= l[j+1]*m[k-j]
       end
@@ -94,7 +94,7 @@ function pslq(x, prec; maxiter=256)
     for k =1:j
       h[i][k] -= t*h[j][k]
     end
-    t = Integer(t)
+    t = convert(Integer,t)
     for k = 1:n
       a[i][k] -= t*a[j][k]
       b[j][k] += t*b[i][k]
@@ -134,7 +134,7 @@ function pslq(x, prec; maxiter=256)
       for k=1:j
         h[i][k] -= t*h[j][k]
       end
-      t = Integer(t)
+      t = convert(Integer,t)
       for k=1:n
         a[i][k] -= t*a[j][k]
         b[j][k] += t*b[i][k]
